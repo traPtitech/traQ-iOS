@@ -18,6 +18,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
 
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: view.bounds, configuration: webConfiguration)
+        webView.navigationDelegate = self
         
         let webUrl = URL(string: "https://traq-dev.tokyotech.org")!
         let myRequest = URLRequest(url: webUrl)
@@ -30,6 +31,17 @@ class ViewController: UIViewController, WKNavigationDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void){
+        let url = navigationAction.request.url
+        print(url?.host ?? "po")
+        if url?.host != "traq-dev.tokyotech.org" {
+            decisionHandler(.cancel)
+            UIApplication.shared.open(url!)
+        } else {
+            decisionHandler(.allow)
+        }
     }
 }
 
