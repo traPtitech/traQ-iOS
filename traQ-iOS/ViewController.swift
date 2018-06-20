@@ -17,6 +17,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
 
         let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.applicationNameForUserAgent = "traQ-iOS"
         webView = WKWebView(frame: view.bounds, configuration: webConfiguration)
         webView.navigationDelegate = self
         
