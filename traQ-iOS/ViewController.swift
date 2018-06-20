@@ -7,19 +7,29 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WKNavigationDelegate {
 
-    override func viewDidLoad() {
+    var webView: WKWebView!
+    
+    override func viewDidLoad(){
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: view.bounds, configuration: webConfiguration)
+        
+        let webUrl = URL(string: "https://traq-dev.tokyotech.org")!
+        let myRequest = URLRequest(url: webUrl)
+        webView.load(myRequest)
+        
+        // インスタンスをビューに追加する
+        self.view.addSubview(webView)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
