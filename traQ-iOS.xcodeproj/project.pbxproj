@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		525BC46126598502920752BD /* Pods_traQ_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6582464F8650D1AB433C70CE /* Pods_traQ_iOS.framework */; };
 		E5FB656920DA9DE30053C97E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB656820DA9DE30053C97E /* AppDelegate.swift */; };
 		E5FB656B20DA9DE30053C97E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB656A20DA9DE30053C97E /* ViewController.swift */; };
 		E5FB656E20DA9DE30053C97E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5FB656C20DA9DE30053C97E /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6582464F8650D1AB433C70CE /* Pods_traQ_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_traQ_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		892EAD514C47DD65D6073F12 /* Pods-traQ-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-iOS/Pods-traQ-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		AFA09DCF226303DFAA095232 /* Pods-traQ-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-iOS/Pods-traQ-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E5FB656520DA9DE30053C97E /* traQ-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "traQ-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FB656820DA9DE30053C97E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5FB656A20DA9DE30053C97E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525BC46126598502920752BD /* Pods_traQ_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7B00D95E02480AECF3B4AE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6582464F8650D1AB433C70CE /* Pods_traQ_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E5FB655C20DA9DE30053C97E = {
 			isa = PBXGroup;
 			children = (
 				E5FB656720DA9DE30053C97E /* traQ-iOS */,
 				E5FB656620DA9DE30053C97E /* Products */,
+				E83DE2452D68DCAAC04BB7F9 /* Pods */,
+				B7B00D95E02480AECF3B4AE8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = "traQ-iOS";
 			sourceTree = "<group>";
 		};
+		E83DE2452D68DCAAC04BB7F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AFA09DCF226303DFAA095232 /* Pods-traQ-iOS.debug.xcconfig */,
+				892EAD514C47DD65D6073F12 /* Pods-traQ-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5FB657720DA9DE60053C97E /* Build configuration list for PBXNativeTarget "traQ-iOS" */;
 			buildPhases = (
+				E1F793FB1EC3394364D612C3 /* [CP] Check Pods Manifest.lock */,
 				E5FB656120DA9DE30053C97E /* Sources */,
 				E5FB656220DA9DE30053C97E /* Frameworks */,
 				E5FB656320DA9DE30053C97E /* Resources */,
+				E77FAB131140FEB938ED0F60 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E1F793FB1EC3394364D612C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-traQ-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E77FAB131140FEB938ED0F60 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-traQ-iOS/Pods-traQ-iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-traQ-iOS/Pods-traQ-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E5FB656120DA9DE30053C97E /* Sources */ = {
@@ -278,6 +349,7 @@
 		};
 		E5FB657820DA9DE60053C97E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFA09DCF226303DFAA095232 /* Pods-traQ-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -295,6 +367,7 @@
 		};
 		E5FB657920DA9DE60053C97E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 892EAD514C47DD65D6073F12 /* Pods-traQ-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
