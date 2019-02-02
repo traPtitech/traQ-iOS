@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		525BC46126598502920752BD /* Pods_traQ_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6582464F8650D1AB433C70CE /* Pods_traQ_iOS.framework */; };
+		E5B99758220599FB00521A9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5B99757220599FB00521A9A /* GoogleService-Info.plist */; };
 		E5FB656920DA9DE30053C97E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB656820DA9DE30053C97E /* AppDelegate.swift */; };
 		E5FB656B20DA9DE30053C97E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB656A20DA9DE30053C97E /* ViewController.swift */; };
 		E5FB656E20DA9DE30053C97E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5FB656C20DA9DE30053C97E /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 		6582464F8650D1AB433C70CE /* Pods_traQ_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_traQ_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		892EAD514C47DD65D6073F12 /* Pods-traQ-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-iOS/Pods-traQ-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		AFA09DCF226303DFAA095232 /* Pods-traQ-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-iOS/Pods-traQ-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E5B99757220599FB00521A9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E5B997592205C5A000521A9A /* traQ-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "traQ-iOS.entitlements"; sourceTree = "<group>"; };
 		E5FB656520DA9DE30053C97E /* traQ-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "traQ-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FB656820DA9DE30053C97E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5FB656A20DA9DE30053C97E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,11 +72,13 @@
 		E5FB656720DA9DE30053C97E /* traQ-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E5B997592205C5A000521A9A /* traQ-iOS.entitlements */,
 				E5FB656820DA9DE30053C97E /* AppDelegate.swift */,
 				E5FB656A20DA9DE30053C97E /* ViewController.swift */,
 				E5FB656C20DA9DE30053C97E /* Main.storyboard */,
 				E5FB656F20DA9DE60053C97E /* Assets.xcassets */,
 				E5FB657120DA9DE60053C97E /* LaunchScreen.storyboard */,
+				E5B99757220599FB00521A9A /* GoogleService-Info.plist */,
 				E5FB657420DA9DE60053C97E /* Info.plist */,
 			);
 			path = "traQ-iOS";
@@ -122,6 +127,14 @@
 				TargetAttributes = {
 					E5FB656420DA9DE30053C97E = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -149,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5FB657320DA9DE60053C97E /* LaunchScreen.storyboard in Resources */,
+				E5B99758220599FB00521A9A /* GoogleService-Info.plist in Resources */,
 				E5FB657020DA9DE60053C97E /* Assets.xcassets in Resources */,
 				E5FB656E20DA9DE30053C97E /* Main.storyboard in Resources */,
 			);
@@ -352,13 +366,16 @@
 			baseConfigurationReference = AFA09DCF226303DFAA095232 /* Pods-traQ-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "traQ-iOS/traQ-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3T86F866SY;
 				INFOPLIST_FILE = "traQ-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "traP.traQ-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = tech.trapti.traQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -370,13 +387,17 @@
 			baseConfigurationReference = 892EAD514C47DD65D6073F12 /* Pods-traQ-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "traQ-iOS/traQ-iOS.entitlements";
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3T86F866SY;
 				INFOPLIST_FILE = "traQ-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "traP.traQ-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = tech.trapti.traQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

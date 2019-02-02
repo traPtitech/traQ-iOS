@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import Firebase
 
 class ViewController: UIViewController, WKNavigationDelegate {
 
@@ -24,6 +25,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let webUrl = URL(string: "https://traq-dev.tokyotech.org")!
         let myRequest = URLRequest(url: webUrl)
         webView.load(myRequest)
+        
         
         // インスタンスをビューに追加する
         self.view.addSubview(webView)
@@ -44,5 +46,27 @@ class ViewController: UIViewController, WKNavigationDelegate {
             decisionHandler(.allow)
         }
     }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("読み込み完了")
+        InstanceID.instanceID().instanceID(handler: { (result, error) in
+            print(result?.token ?? "No Token")
+            self.webView.evaluateJavaScript("window.iOSToken = '" + (result?.token ?? "") + "'", completionHandler: nil)
+        })
+    }
+    
+//    func addRefreshFcmTokenNotificationObserver() {
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(self.fcmTokenRefreshNotification(_:)),
+//            name: .InstanceIDTokenRefresh,
+//            object: nil)
+//    }
+//    
+//    @objc func fcmTokenRefreshNotification(_ notification: Notification) {
+//
+//    }
+//    
+
 }
 

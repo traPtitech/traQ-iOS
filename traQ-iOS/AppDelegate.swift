@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +18,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+        }
+        
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: [.badge, .sound, .alert],
+                completionHandler: { (granted: Bool, error: Swift.Error?) in
+                    if let _ = error { return }
+                    if granted == false { return }
+                    
+                    DispatchQueue.main.async(execute: {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    })
+                    
+            })
+        } else {
+            let settings = UIUserNotificationSettings(
+                types: [.alert, .badge, .sound],
+                categories: nil)
+            application.registerUserNotificationSettings(settings)
+            application.registerForRemoteNotifications()
+        }
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> ()) {
+        
+//        switch application.applicationState {
+////        case .inactive:
+////            // 通知からアプリを起動した時の処理
+////            ()
+////
+////        case .active:
+////            // アプリ起動中に通知を受け取った時の処理
+////            ()
+////
+////        case .background:
+////            ()
+////
+//        }
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -40,7 +86,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
+@available(iOS 10.0, *)
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo: [AnyHashable: Any] = notification.request.content.userInfo
+        // 通知からアプリを起動した時の処理
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo: [AnyHashable: Any] = response.notification.request.content.userInfo
+        // アプリ起動中に通知を受け取った時の処理
+    }
+}
