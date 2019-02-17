@@ -22,9 +22,20 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView = WKWebView(frame: view.bounds, configuration: webConfiguration)
         webView.navigationDelegate = self
         
-        let webUrl = URL(string: "https://traq-dev.tokyotech.org")!
+        let appDelegete = UIApplication.shared.delegate as! AppDelegate
+        
+        let path = appDelegete.path
+        
+        var webUrl: URL
+        if path != nil {
+            webUrl = URL(string: "https://traq-dev.tokyotech.org" + path!)!
+        }else {
+            webUrl = URL(string: "https://traq-dev.tokyotech.org")!
+        }
         let myRequest = URLRequest(url: webUrl)
         webView.load(myRequest)
+        
+        appDelegete.webView = webView
         
         
         // インスタンスをビューに追加する
