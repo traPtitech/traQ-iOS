@@ -37,7 +37,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         appDelegete.webView = webView
         
-        
+
         // インスタンスをビューに追加する
         self.view.addSubview(webView)
     }
@@ -64,6 +64,25 @@ class ViewController: UIViewController, WKNavigationDelegate {
             print(result?.token ?? "No Token")
             self.webView.evaluateJavaScript("window.iOSToken = '" + (result?.token ?? "") + "'", completionHandler: nil)
         })
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            // viewDidLayoutSubviewsではSafeAreaの取得ができている
+            let topSafeAreaHeight = self.view.safeAreaInsets.top
+            let bottomSafeAreaHeight = self.view.safeAreaInsets.bottom
+            print("in viewDidLayoutSubviews")
+            print(topSafeAreaHeight)    // iPhoneXなら44, その他は20.0
+            print(bottomSafeAreaHeight) // iPhoneXなら34,  その他は0
+            
+            let width:CGFloat = self.view.frame.width
+            let height:CGFloat = self.view.frame.height
+            webView.frame = CGRect(
+                x: 0, y: topSafeAreaHeight,
+                width: width, height: height-topSafeAreaHeight-bottomSafeAreaHeight-100)
+
+        }
     }
     
 //    func addRefreshFcmTokenNotificationObserver() {
