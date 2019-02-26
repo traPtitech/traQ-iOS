@@ -21,7 +21,9 @@
 		892EAD514C47DD65D6073F12 /* Pods-traQ-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-iOS/Pods-traQ-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		AFA09DCF226303DFAA095232 /* Pods-traQ-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-iOS/Pods-traQ-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E5B99757220599FB00521A9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E5B997592205C5A000521A9A /* traQ-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "traQ-iOS.entitlements"; sourceTree = "<group>"; };
+		E5E7B6C62222A82400B5B575 /* traQ-iOS.prod.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "traQ-iOS.prod.entitlements"; sourceTree = "<group>"; };
+		E5E7B6C72222A82400B5B575 /* traQ-iOS.dev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "traQ-iOS.dev.entitlements"; sourceTree = "<group>"; };
+		E5E7B6C82222AB3300B5B575 /* traQ-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "traQ-iOS.entitlements"; sourceTree = "<group>"; };
 		E5FB656520DA9DE30053C97E /* traQ-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "traQ-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FB656820DA9DE30053C97E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5FB656A20DA9DE30053C97E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,8 +74,10 @@
 		E5FB656720DA9DE30053C97E /* traQ-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				E5B997592205C5A000521A9A /* traQ-iOS.entitlements */,
+				E5E7B6C82222AB3300B5B575 /* traQ-iOS.entitlements */,
 				E5FB656820DA9DE30053C97E /* AppDelegate.swift */,
+				E5E7B6C72222A82400B5B575 /* traQ-iOS.dev.entitlements */,
+				E5E7B6C62222A82400B5B575 /* traQ-iOS.prod.entitlements */,
 				E5FB656A20DA9DE30053C97E /* ViewController.swift */,
 				E5FB656C20DA9DE30053C97E /* Main.storyboard */,
 				E5FB656F20DA9DE60053C97E /* Assets.xcassets */,
@@ -366,10 +370,10 @@
 			baseConfigurationReference = AFA09DCF226303DFAA095232 /* Pods-traQ-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "traQ-iOS/traQ-iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "traQ-iOS/traQ-iOS.dev.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3T86F866SY;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "traQ-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -377,7 +381,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.trapti.traQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -387,10 +392,11 @@
 			baseConfigurationReference = 892EAD514C47DD65D6073F12 /* Pods-traQ-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "traQ-iOS/traQ-iOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "traQ-iOS/traQ-iOS.prod.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3T86F866SY;
 				INFOPLIST_FILE = "traQ-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -399,7 +405,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.trapti.traQ;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				PROVISIONING_PROFILE_SPECIFIER = "traQ-R";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
