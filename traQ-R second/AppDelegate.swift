@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var path: String?
     var webView: WKWebView!
+    var host: String!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -100,9 +101,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let userInfo: [AnyHashable: Any] = notification.request.content.userInfo
         // 通知からアプリを起動した時の処理
         print(userInfo)
+        if (UIApplication.shared.applicationState == UIApplication.State.active){
+            return
+        }
         path = userInfo["path"] as? String
         if (path != nil) {
-            webView.load(URLRequest(url: URL(string: "https://traq-dev.tokyotech.org" + path!)!))
+            webView.load(URLRequest(url: URL(string: "https://" + self.host + path!)!))
         }
     }
     
@@ -112,7 +116,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         print(userInfo)
         path = userInfo["path"] as? String
         if (path != nil) {
-            webView.load(URLRequest(url: URL(string: "https://traq-dev.tokyotech.org" + path!)!))
+            webView.load(URLRequest(url: URL(string: "https://" + self.host + path!)!))
         }
     }
 }
@@ -135,10 +139,4 @@ extension AppDelegate : MessagingDelegate {
         print("Received data message: \(remoteMessage.appData)")
     }
     // [END ios_10_data_message]
-}
-
-extension AppDelegate {
-    func willShowKeyboard(notification:NSNotification){
-        print("po")
-    }
 }
