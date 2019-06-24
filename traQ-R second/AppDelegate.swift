@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotifications()
         }
         
+        // Override point for customization after application launch.
         return true
     }
     
