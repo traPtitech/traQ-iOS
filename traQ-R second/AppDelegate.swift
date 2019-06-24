@@ -51,17 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Override point for customization after application launch.
-        if #available(iOS 12.0, *) {
-            // Deal with wrong offset after keyboard disappears
-            // See: https://github.com/ionic-team/capacitor/issues/814#issuecomment-441607213
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(self.keyboardWillHide(notification:)),
-                name: UIResponder.keyboardWillHideNotification,
-                object: nil
-            )
-        }
-        
         return true
     }
     
@@ -104,18 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if #available(iOS 12.0, *) {
-            for v in self.webView.subviews {
-                if !(v is UIScrollView) {
-                    continue
-                }
-                let scrollView = v as! UIScrollView
-                scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-            }
-        }
     }
 }
 

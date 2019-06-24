@@ -49,6 +49,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
 
         // インスタンスをビューに追加する
         self.view.addSubview(webView)
+        
+        // Deal with wrong offset after keyboard hide
+        // See: https://github.com/ionic-team/capacitor/issues/814#issuecomment-441607213
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.keyboardWillHide(notification:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -144,6 +153,25 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
             webView.frame = CGRect(
                 x: 0, y: topSafeAreaHeight,
                 width: width, height: height-topSafeAreaHeight-bottomSafeAreaHeight)
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if #available(iOS 12.0, *) {
+            for v in self.webView.subviews {
+                if !(v is UIScrollView) {
+                    continue
+                }
+                let scrollView = v as! UIScrollView
+                if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                    let currentSize = scrollView.contentSize
+                    scrollView.contentSize = CGSize(
+                        width: currentSize.width,
+                        height: currentSize.height + keyboardFrame.cgRectValue.height
+                    )
+                }
+                scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+            }
         }
     }
 }
