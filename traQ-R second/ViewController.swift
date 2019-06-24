@@ -19,7 +19,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        if (Date() < Date.init(timeIntervalSince1970: 1551348000)) {
+        // 2019-06-30T19:00:00+09:00
+        if (Date() < Date.init(timeIntervalSince1970: 1561888800)) {
             host = "traq-dev.tokyotech.org"
         }
 
