@@ -31,7 +31,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.applicationNameForUserAgent = "traQ-iOS"
         webConfiguration.allowsInlineMediaPlayback = true
-        webView = WKWebView(frame: self.view.frame, configuration: webConfiguration)
+        webView = FullScreenWKWebView(frame: self.view.bounds, configuration: webConfiguration)
+        
+        webView.scrollView.contentInset = .zero
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -82,7 +85,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
             }
         }
     }
-    
+        
     override func viewDidAppear(_ animated: Bool) {
         // self.startObserveKeyboardNotification()
     }
@@ -96,7 +99,6 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url
-        print(url?.host ?? "po")
         if url?.host != self.host {
             decisionHandler(.cancel)
             UIApplication.shared.open(url!)
@@ -200,4 +202,3 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         }
     }
 }
-
