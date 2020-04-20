@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B9A4068D22C09D2800B96844 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9A4068C22C09D2800B96844 /* GoogleService-Info.plist */; };
+		B9057B43233E44DB0051061C /* ShareChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9057B42233E44DB0051061C /* ShareChannelViewController.swift */; };
+		B92846C02449731F00ABF9AD /* FullScreenWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92846BF2449731F00ABF9AD /* FullScreenWKWebView.swift */; };
+		B9A555AB23338309005D1419 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A555AA23338309005D1419 /* ShareViewController.swift */; };
+		B9A555AE23338309005D1419 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9A555AC23338309005D1419 /* MainInterface.storyboard */; };
+		B9A555B223338309005D1419 /* traQShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B9A555A823338309005D1419 /* traQShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B9A555B92334506F005D1419 /* ShareExtensionPageTitleProcessor.js in Resources */ = {isa = PBXBuildFile; fileRef = B9A555B82334506F005D1419 /* ShareExtensionPageTitleProcessor.js */; };
+		B9BCE4F32449549800A4472E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9BCE4F22449549800A4472E /* GoogleService-Info.plist */; };
 		CE017B6B9CA19C9FBBB86F32 /* Pods_traQ_R_second.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1B19AA25B7DC1360F80032 /* Pods_traQ_R_second.framework */; };
 		E5E7B6D62224F70400B5B575 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7B6D52224F70400B5B575 /* AppDelegate.swift */; };
 		E5E7B6D82224F70400B5B575 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7B6D72224F70400B5B575 /* ViewController.swift */; };
@@ -16,9 +22,41 @@
 		E5E7B6E02224F70B00B5B575 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5E7B6DE2224F70B00B5B575 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B9A555B023338309005D1419 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5E7B6CA2224F70300B5B575 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9A555A723338309005D1419;
+			remoteInfo = traQShareExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B9A555B623338309005D1419 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B9A555B223338309005D1419 /* traQShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3460C98CAA9627EAC97BFCA5 /* Pods-traQ-R second.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-R second.debug.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-R second/Pods-traQ-R second.debug.xcconfig"; sourceTree = "<group>"; };
-		B9A4068C22C09D2800B96844 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B9057B42233E44DB0051061C /* ShareChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareChannelViewController.swift; sourceTree = "<group>"; };
+		B92846BF2449731F00ABF9AD /* FullScreenWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenWKWebView.swift; sourceTree = "<group>"; };
+		B9A555A823338309005D1419 /* traQShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = traQShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9A555AA23338309005D1419 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		B9A555AD23338309005D1419 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B9A555AF23338309005D1419 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9A555B723338523005D1419 /* traQShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = traQShareExtension.entitlements; sourceTree = "<group>"; };
+		B9A555B82334506F005D1419 /* ShareExtensionPageTitleProcessor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = ShareExtensionPageTitleProcessor.js; sourceTree = "<group>"; };
+		B9BCE4F22449549800A4472E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C14ECCB48CB7A7C783FE088D /* Pods-traQ-R second.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-R second.release.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-R second/Pods-traQ-R second.release.xcconfig"; sourceTree = "<group>"; };
 		CE1B19AA25B7DC1360F80032 /* Pods_traQ_R_second.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_traQ_R_second.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E7B6D22224F70400B5B575 /* traQ-R second.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "traQ-R second.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,6 +70,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B9A555A523338309005D1419 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5E7B6CF2224F70400B5B575 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,10 +105,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B9A555A923338309005D1419 /* traQShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				B9A555B723338523005D1419 /* traQShareExtension.entitlements */,
+				B9A555AA23338309005D1419 /* ShareViewController.swift */,
+				B9057B42233E44DB0051061C /* ShareChannelViewController.swift */,
+				B9A555AC23338309005D1419 /* MainInterface.storyboard */,
+				B9A555AF23338309005D1419 /* Info.plist */,
+				B9A555B82334506F005D1419 /* ShareExtensionPageTitleProcessor.js */,
+			);
+			path = traQShareExtension;
+			sourceTree = "<group>";
+		};
 		E5E7B6C92224F70300B5B575 = {
 			isa = PBXGroup;
 			children = (
 				E5E7B6D42224F70400B5B575 /* traQ-R second */,
+				B9A555A923338309005D1419 /* traQShareExtension */,
 				E5E7B6D32224F70400B5B575 /* Products */,
 				094F0A604565D689DC598F70 /* Pods */,
 				207A5F3B57CDF299D83C29E2 /* Frameworks */,
@@ -74,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				E5E7B6D22224F70400B5B575 /* traQ-R second.app */,
+				B9A555A823338309005D1419 /* traQShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,13 +142,14 @@
 			isa = PBXGroup;
 			children = (
 				E5E7B6E72224F74600B5B575 /* traQ-R second.entitlements */,
-				B9A4068C22C09D2800B96844 /* GoogleService-Info.plist */,
+				B9BCE4F22449549800A4472E /* GoogleService-Info.plist */,
 				E5E7B6D52224F70400B5B575 /* AppDelegate.swift */,
 				E5E7B6D72224F70400B5B575 /* ViewController.swift */,
 				E5E7B6D92224F70400B5B575 /* Main.storyboard */,
 				E5E7B6DC2224F70B00B5B575 /* Assets.xcassets */,
 				E5E7B6DE2224F70B00B5B575 /* LaunchScreen.storyboard */,
 				E5E7B6E12224F70B00B5B575 /* Info.plist */,
+				B92846BF2449731F00ABF9AD /* FullScreenWKWebView.swift */,
 			);
 			path = "traQ-R second";
 			sourceTree = "<group>";
@@ -96,6 +157,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B9A555A723338309005D1419 /* traQShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9A555B523338309005D1419 /* Build configuration list for PBXNativeTarget "traQShareExtension" */;
+			buildPhases = (
+				B9A555A423338309005D1419 /* Sources */,
+				B9A555A523338309005D1419 /* Frameworks */,
+				B9A555A623338309005D1419 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = traQShareExtension;
+			productName = traQShareExtension;
+			productReference = B9A555A823338309005D1419 /* traQShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E5E7B6D12224F70400B5B575 /* traQ-R second */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5E7B6E42224F70B00B5B575 /* Build configuration list for PBXNativeTarget "traQ-R second" */;
@@ -105,10 +183,12 @@
 				E5E7B6CF2224F70400B5B575 /* Frameworks */,
 				E5E7B6D02224F70400B5B575 /* Resources */,
 				0A485ED20FAB62E4B28B657C /* [CP] Embed Pods Frameworks */,
+				B9A555B623338309005D1419 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B9A555B123338309005D1419 /* PBXTargetDependency */,
 			);
 			name = "traQ-R second";
 			productName = "traQ-R second";
@@ -121,13 +201,30 @@
 		E5E7B6CA2224F70300B5B575 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1010;
 				TargetAttributes = {
+					B9A555A723338309005D1419 = {
+						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
 					E5E7B6D12224F70400B5B575 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 							com.apple.Push = {
@@ -151,17 +248,27 @@
 			projectRoot = "";
 			targets = (
 				E5E7B6D12224F70400B5B575 /* traQ-R second */,
+				B9A555A723338309005D1419 /* traQShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B9A555A623338309005D1419 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A555B92334506F005D1419 /* ShareExtensionPageTitleProcessor.js in Resources */,
+				B9A555AE23338309005D1419 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5E7B6D02224F70400B5B575 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E5E7B6E02224F70B00B5B575 /* LaunchScreen.storyboard in Resources */,
-				B9A4068D22C09D2800B96844 /* GoogleService-Info.plist in Resources */,
+				B9BCE4F32449549800A4472E /* GoogleService-Info.plist in Resources */,
 				E5E7B6DD2224F70B00B5B575 /* Assets.xcassets in Resources */,
 				E5E7B6DB2224F70400B5B575 /* Main.storyboard in Resources */,
 			);
@@ -212,18 +319,44 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B9A555A423338309005D1419 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9057B43233E44DB0051061C /* ShareChannelViewController.swift in Sources */,
+				B9A555AB23338309005D1419 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5E7B6CE2224F70400B5B575 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E5E7B6D82224F70400B5B575 /* ViewController.swift in Sources */,
 				E5E7B6D62224F70400B5B575 /* AppDelegate.swift in Sources */,
+				B92846C02449731F00ABF9AD /* FullScreenWKWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B9A555B123338309005D1419 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9A555A723338309005D1419 /* traQShareExtension */;
+			targetProxy = B9A555B023338309005D1419 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		B9A555AC23338309005D1419 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9A555AD23338309005D1419 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		E5E7B6D92224F70400B5B575 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -243,6 +376,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B9A555B323338309005D1419 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = traQShareExtension/traQShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3T86F866SY;
+				INFOPLIST_FILE = traQShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tech.trapti.traQ.traQShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B9A555B423338309005D1419 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = traQShareExtension/traQShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3T86F866SY;
+				INFOPLIST_FILE = traQShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tech.trapti.traQ.traQShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E5E7B6E22224F70B00B5B575 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -294,7 +469,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -349,7 +524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -363,11 +538,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3460C98CAA9627EAC97BFCA5 /* Pods-traQ-R second.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "traQ-R second/traQ-R second.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3T86F866SY;
 				INFOPLIST_FILE = "traQ-R second/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,11 +560,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C14ECCB48CB7A7C783FE088D /* Pods-traQ-R second.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "traQ-R second/traQ-R second.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3T86F866SY;
 				INFOPLIST_FILE = "traQ-R second/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -402,6 +581,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B9A555B523338309005D1419 /* Build configuration list for PBXNativeTarget "traQShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9A555B323338309005D1419 /* Debug */,
+				B9A555B423338309005D1419 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E5E7B6CD2224F70300B5B575 /* Build configuration list for PBXProject "traQ-R second" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

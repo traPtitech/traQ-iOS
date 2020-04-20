@@ -16,18 +16,25 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
     var openKeyboard: Bool! = false
     var host: String = "q.trap.jp"
     
+    private let suiteName: String = "group.tech.trapti.traQ"
+    private let sessionKey: String = "traq_session"
+    private let sessionCookieName: String = "r_session"
+
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        // 2019-06-30T19:00:00+09:00
-        if (Date() < Date.init(timeIntervalSince1970: 1561888800)) {
-            host = "traq-dev.tokyotech.org"
+        // 2020-05-01T00:00:00+09:00
+        if (Date() < Date.init(timeIntervalSince1970: 1588258800)) {
+            host = "traq-s-dev.tokyotech.org"
         }
 
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.applicationNameForUserAgent = "traQ-iOS"
         webConfiguration.allowsInlineMediaPlayback = true
-        webView = WKWebView(frame: self.view.frame, configuration: webConfiguration)
+        webView = FullScreenWKWebView(frame: self.view.bounds, configuration: webConfiguration)
+        
+        webView.scrollView.contentInset = .zero
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -59,8 +66,26 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+        
+        // Share Extension用のセッション同期
+        webView.configuration.websiteDataStore.httpCookieStore.getAllCookies() {[weak self] (cookies) in
+            guard let self = self else {
+                return
+            }
+            for cookie in cookies {
+                if (cookie.name != self.sessionCookieName) {
+                    continue
+                }
+                guard let userDefaults = UserDefaults(suiteName: self.suiteName) else {
+                    continue
+                }
+                userDefaults.set(cookie.value, forKey: self.sessionKey)
+                userDefaults.synchronize()
+                break
+            }
+        }
     }
-    
+        
     override func viewDidAppear(_ animated: Bool) {
         // self.startObserveKeyboardNotification()
     }
@@ -70,9 +95,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void){
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationAction: WKNavigationAction,
+                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url
-        print(url?.host ?? "po")
         if url?.host != self.host {
             decisionHandler(.cancel)
             UIApplication.shared.open(url!)
@@ -176,4 +202,3 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         }
     }
 }
-
