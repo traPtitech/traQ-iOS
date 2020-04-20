@@ -10,34 +10,51 @@ import Social
 import MobileCoreServices
 
 struct MessageRequest: Codable {
-    let text: String
+    let content: String
+    let embed: Bool?
 }
 
-struct ChannelResponse: Codable {
-    let channelId: String
-    let name: String
-    let member: [String]?
-    let parent: String
-    let topic: String
-    let children: [String]?
+struct Channel: Codable {
+    let id: String
+    let parentId: String?
     let visibility: Bool
     let force: Bool
-    let privateChannel: Bool
-    let dm: Bool
+    let topic: String
+    let name: String
+    let children: [String]
     
     enum CodingKeys: String, CodingKey {
-        case channelId
-        case name
-        case member
-        case parent
-        case topic
-        case children
+        case id
+        case parentId
         case visibility
         case force
-        case privateChannel = "private"
-        case dm
+        case topic
+        case name
+        case children
     }
 }
+
+struct DMChannel: Codable {
+    let id: String
+    let userId: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userId
+    }
+}
+
+
+struct ChannelResponse: Codable {
+    let publicChannels: [Channel]
+    let dm: [DMChannel]?
+    enum CodingKeys: String, CodingKey {
+        case publicChannels = "public"
+        case dm
+        
+    }
+}
+
 
 enum traQShareError: Error {
     case noChannelSelected
@@ -52,9 +69,9 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
     
     private let sessionCookieName = "r_session"
     
-    private let apiRoot = "https://q.trap.jp/api/1.0"
+    private var apiRoot = "https://q.trap.jp/api/v3"
     private let channelIdPlaceholder = "{channelID}"
-    private let postMessageUrl = "/channels/{channelID}/messages?embed=1"
+    private let postMessageUrl = "/channels/{channelID}/messages"
     private let getChannelsUrl = "/channels"
     private let getStarsUrl = "/users/me/stars"
     
@@ -62,18 +79,38 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
     private var channelName: String?
     private var channelId: String?
     
-    private var channels: [ChannelResponse] = []
-    private var channelsDict: [String:ChannelResponse] = [:]
+    private var channels: [Channel] = []
+    private var channelsDict: [String:Channel] = [:]
     private var staredChannelIds: [String] = []
     private var staredChannelPathDict: [String:String] = [:]
     
     private var hasChannelLoaded = false
+        
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
     
-    private func createRequest(method: String, endpoint: String) -> URLRequest {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    private func setup() {
+        // 2020-05-01T00:00:00+09:00
+        if (Date() < Date.init(timeIntervalSince1970: 1588258800)) {
+            apiRoot = "https://traq-s-dev.tokyotech.org/api/v3"
+        }
+    }
+        
+    private func createRequest(method: String, endpoint: String, body: Data? = nil) -> URLRequest {
         var request = URLRequest(url: URL(string: self.apiRoot + endpoint)!)
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("\(self.sessionCookieName)=\(self.session ?? "")", forHTTPHeaderField: "cookie")
+        if body != nil {
+            request.httpBody = body!
+        }
         return request
     }
     
@@ -96,21 +133,22 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
     }
 
     
-    private func processChannelsResponse<T: Decodable>(_ data: Data?, _ response: URLResponse?, _ error: Error?) -> [T] {
+    private func processChannelsResponse<T: Decodable>(_ data: Data?, _ response: URLResponse?, _ error: Error?) -> T? {
         guard let response =
             response as? HTTPURLResponse,
             (200...299).contains(response.statusCode),
             data != nil
         else {
             print ("server error")
-            return []
+            return nil
         }
         do {
-            return try JSONDecoder().decode([T].self, from: data!)
+            return try JSONDecoder().decode(T.self, from: data!)
         }
-        catch {
+        catch let err {
             print ("decode failed")
-            return []
+            print(err)
+            return nil
         }
     }
     
@@ -119,7 +157,11 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
         var parentId = channelId
         while parentId != "", let parentChannel = self.channelsDict[parentId] {
             path = parentChannel.name + "/" + path
-            parentId = parentChannel.parent
+            let nextPparentId = channelsDict[parentId]?.id ?? ""
+            if (nextPparentId == parentId) {
+                break
+            }
+            parentId = nextPparentId
         }
         return "#" + path.dropLast(1)
     }
@@ -128,12 +170,12 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
         super.viewDidLoad()
         let frame = self.view.frame
         let newSize:CGSize = CGSize(width:frame.size.width, height:frame.size.height * 2)
-        self.preferredContentSize = newSize
+        preferredContentSize = newSize
         
-        self.loadSettings()
+        loadSettings()
         
-        let starRequest = self.createRequest(method: "GET", endpoint: self.getStarsUrl)
-        let channelsRequest = self.createRequest(method: "GET", endpoint: self.getChannelsUrl)
+        let starRequest = createRequest(method: "GET", endpoint: self.getStarsUrl)
+        let channelsRequest = createRequest(method: "GET", endpoint: self.getChannelsUrl)
         
         let dispatchGroup = DispatchGroup()
         let dispatchQueue = DispatchQueue(label: "queue", attributes: .concurrent)
@@ -141,9 +183,12 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
         dispatchGroup.enter()
         dispatchQueue.async(group: dispatchGroup) {
             URLSession.shared.dataTask(with: channelsRequest) { data, response, error in
-                self.channels = self.processChannelsResponse(data, response, error)
-                self.channels.forEach { channel in
-                    self.channelsDict[channel.channelId] = channel
+                let resultOrNil: ChannelResponse? = self.processChannelsResponse(data, response, error)
+                if let result = resultOrNil  {
+                    self.channels = result.publicChannels
+                    self.channels.forEach { channel in
+                        self.channelsDict[channel.id] = channel
+                    }
                 }
                 dispatchGroup.leave()
             }.resume()
@@ -152,7 +197,10 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
         dispatchGroup.enter()
         dispatchQueue.async(group: dispatchGroup) {
             URLSession.shared.dataTask(with: starRequest) { data, response, error in
-                self.staredChannelIds = self.processChannelsResponse(data, response, error)
+                let staredChannelIdsOrNil: [String]? = self.processChannelsResponse(data, response, error)
+                if let staredChannelIds = staredChannelIdsOrNil {
+                    self.staredChannelIds = staredChannelIds
+                }
                 dispatchGroup.leave()
             }.resume()
         }
@@ -209,14 +257,14 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
                     let url = results["url"] as! String
                     
                     // POSTする
-                    let message = MessageRequest(text: "\(content ?? "")\n[\(title)](\(url))")
+                    let message = MessageRequest(content: "\(content ?? "")\n[\(title)](\(url))", embed: true)
                     let endpoint = self.postMessageUrl.replacingOccurrences(of: self.channelIdPlaceholder, with: channelId)
                     
                     guard let uploadData = try? JSONEncoder().encode(message) else {
                         return
                     }
                     
-                    let request = self.createRequest(method: "POST", endpoint: endpoint)
+                    let request = self.createRequest(method: "POST", endpoint: endpoint, body: uploadData)
 
                     let task = URLSession.shared.uploadTask(with: request, from: uploadData) { data, response, error in
                         if let error = error {
