@@ -59,14 +59,14 @@
 		B9BCE4F22449549800A4472E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C14ECCB48CB7A7C783FE088D /* Pods-traQ-R second.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-R second.release.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-R second/Pods-traQ-R second.release.xcconfig"; sourceTree = "<group>"; };
 		CE1B19AA25B7DC1360F80032 /* Pods_traQ_R_second.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_traQ_R_second.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5E7B6D22224F70400B5B575 /* traQ-R second.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "traQ-R second.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5E7B6D22224F70400B5B575 /* traQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = traQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E7B6D52224F70400B5B575 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5E7B6D72224F70400B5B575 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E5E7B6DA2224F70400B5B575 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E5E7B6DC2224F70B00B5B575 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5E7B6DF2224F70B00B5B575 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5E7B6E12224F70B00B5B575 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E5E7B6E72224F74600B5B575 /* traQ-R second.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "traQ-R second.entitlements"; sourceTree = "<group>"; };
+		E5E7B6E72224F74600B5B575 /* traQ-S.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "traQ-S.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 		E5E7B6C92224F70300B5B575 = {
 			isa = PBXGroup;
 			children = (
-				E5E7B6D42224F70400B5B575 /* traQ-R second */,
+				E5E7B6D42224F70400B5B575 /* traQ-S */,
 				B9A555A923338309005D1419 /* traQShareExtension */,
 				E5E7B6D32224F70400B5B575 /* Products */,
 				094F0A604565D689DC598F70 /* Pods */,
@@ -132,16 +132,16 @@
 		E5E7B6D32224F70400B5B575 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E5E7B6D22224F70400B5B575 /* traQ-R second.app */,
+				E5E7B6D22224F70400B5B575 /* traQ.app */,
 				B9A555A823338309005D1419 /* traQShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E5E7B6D42224F70400B5B575 /* traQ-R second */ = {
+		E5E7B6D42224F70400B5B575 /* traQ-S */ = {
 			isa = PBXGroup;
 			children = (
-				E5E7B6E72224F74600B5B575 /* traQ-R second.entitlements */,
+				E5E7B6E72224F74600B5B575 /* traQ-S.entitlements */,
 				B9BCE4F22449549800A4472E /* GoogleService-Info.plist */,
 				E5E7B6D52224F70400B5B575 /* AppDelegate.swift */,
 				E5E7B6D72224F70400B5B575 /* ViewController.swift */,
@@ -151,7 +151,7 @@
 				E5E7B6E12224F70B00B5B575 /* Info.plist */,
 				B92846BF2449731F00ABF9AD /* FullScreenWKWebView.swift */,
 			);
-			path = "traQ-R second";
+			path = "traQ-S";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,9 +174,9 @@
 			productReference = B9A555A823338309005D1419 /* traQShareExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		E5E7B6D12224F70400B5B575 /* traQ-R second */ = {
+		E5E7B6D12224F70400B5B575 /* traQ-S */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E5E7B6E42224F70B00B5B575 /* Build configuration list for PBXNativeTarget "traQ-R second" */;
+			buildConfigurationList = E5E7B6E42224F70B00B5B575 /* Build configuration list for PBXNativeTarget "traQ-S" */;
 			buildPhases = (
 				8EB699FA2F3965F162DA2C7B /* [CP] Check Pods Manifest.lock */,
 				E5E7B6CE2224F70400B5B575 /* Sources */,
@@ -190,9 +190,9 @@
 			dependencies = (
 				B9A555B123338309005D1419 /* PBXTargetDependency */,
 			);
-			name = "traQ-R second";
+			name = "traQ-S";
 			productName = "traQ-R second";
-			productReference = E5E7B6D22224F70400B5B575 /* traQ-R second.app */;
+			productReference = E5E7B6D22224F70400B5B575 /* traQ.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -247,7 +247,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E5E7B6D12224F70400B5B575 /* traQ-R second */,
+				E5E7B6D12224F70400B5B575 /* traQ-S */,
 				B9A555A723338309005D1419 /* traQShareExtension */,
 			);
 		};
@@ -469,7 +469,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -524,7 +524,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -542,6 +542,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "traQ-R second/traQ-R second.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3T86F866SY;
 				INFOPLIST_FILE = "traQ-R second/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -549,8 +550,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.trapti.traQ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = traQ;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -564,6 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "traQ-R second/traQ-R second.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3T86F866SY;
 				INFOPLIST_FILE = "traQ-R second/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -571,8 +574,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.trapti.traQ;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = traQ;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -599,7 +603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E5E7B6E42224F70B00B5B575 /* Build configuration list for PBXNativeTarget "traQ-R second" */ = {
+		E5E7B6E42224F70B00B5B575 /* Build configuration list for PBXNativeTarget "traQ-S" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E5E7B6E52224F70B00B5B575 /* Debug */,

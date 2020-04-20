@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>993645413001-uptgs1fmq0of2i84kitef7guon36rs2e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.993645413001-uptgs1fmq0of2i84kitef7guon36rs2e</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>993645413001-sci71n1r9dc23182nf3bckjbk5otli3v.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCZajKtlDuY_FsuysK-EiB3cC-5usF57Lo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>993645413001</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>tech.trapti.traQ</string>
+	<key>PROJECT_ID</key>
+	<string>traq-r</string>
+	<key>STORAGE_BUCKET</key>
+	<string>traq-r.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:993645413001:ios:6d1669d3ee00c0be</string>
+	<key>DATABASE_URL</key>
+	<string>https://traq-r.firebaseio.com</string>
+</dict>
+</plist>
