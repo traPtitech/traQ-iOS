@@ -82,6 +82,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "traQ-S"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
