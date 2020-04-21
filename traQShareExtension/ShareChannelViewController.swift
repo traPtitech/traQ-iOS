@@ -20,7 +20,8 @@ class ShareChannelViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundColor = UIColor.clear
+        tableView.backgroundColor = UIColor.clear
+        edgesForExtendedLayout = []
     }
     
     override func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
