@@ -85,6 +85,7 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
     private var staredChannelPathDict: [String:String] = [:]
     
     private var hasChannelLoaded = false
+    private var hasSession = false
         
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -104,10 +105,10 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
     }
         
     private func createRequest(method: String, endpoint: String, body: Data? = nil) -> URLRequest {
-        var request = URLRequest(url: URL(string: self.apiRoot + endpoint)!)
+        var request = URLRequest(url: URL(string: apiRoot + endpoint)!)
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(self.sessionCookieName)=\(self.session ?? "")", forHTTPHeaderField: "cookie")
+        request.setValue("\(sessionCookieName)=\(session ?? "")", forHTTPHeaderField: "cookie")
         if body != nil {
             request.httpBody = body!
         }
@@ -115,20 +116,20 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
     }
     
     private func loadSettings() {
-        guard let userDefaults = UserDefaults(suiteName: self.suiteName) else {
+        guard let userDefaults = UserDefaults(suiteName: suiteName) else {
             return
         }
-        self.session = userDefaults.string(forKey: self.sessionKey)
-        self.channelName = userDefaults.string(forKey: self.channelNameKey)
-        self.channelId = userDefaults.string(forKey: self.channelIdKey)
+        session = userDefaults.string(forKey: sessionKey)
+        channelName = userDefaults.string(forKey: channelNameKey)
+        channelId = userDefaults.string(forKey: channelIdKey)
     }
     
     private func saveSettings() {
-        guard let userDefaults = UserDefaults(suiteName: self.suiteName) else {
+        guard let userDefaults = UserDefaults(suiteName: suiteName) else {
             return
         }
-        userDefaults.set(self.channelName, forKey: self.channelNameKey)
-        userDefaults.set(self.channelId, forKey: self.channelIdKey)
+        userDefaults.set(channelName, forKey: channelNameKey)
+        userDefaults.set(channelId, forKey: channelIdKey)
         userDefaults.synchronize()
     }
 
@@ -155,7 +156,7 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
     private func getChannelFullPath(_ channelId: String) -> String {
         var path = ""
         var parentId = channelId
-        while parentId != "", let parentChannel = self.channelsDict[parentId] {
+        while parentId != "", let parentChannel = channelsDict[parentId] {
             path = parentChannel.name + "/" + path
             let nextPparentId = channelsDict[parentId]?.id ?? ""
             if (nextPparentId == parentId) {
@@ -168,14 +169,21 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let frame = self.view.frame
+        let frame = view.frame
         let newSize:CGSize = CGSize(width:frame.size.width, height:frame.size.height * 2)
         preferredContentSize = newSize
         
         loadSettings()
+
+        guard session != nil else {
+            hasSession = false
+            return
+        }
+
+        hasSession = true
         
-        let starRequest = createRequest(method: "GET", endpoint: self.getStarsUrl)
-        let channelsRequest = createRequest(method: "GET", endpoint: self.getChannelsUrl)
+        let starRequest = createRequest(method: "GET", endpoint: getStarsUrl)
+        let channelsRequest = createRequest(method: "GET", endpoint: getChannelsUrl)
         
         let dispatchGroup = DispatchGroup()
         let dispatchQueue = DispatchQueue(label: "queue", attributes: .concurrent)
@@ -297,11 +305,16 @@ class ShareViewController: SLComposeServiceViewController, traQChannelTableDeleg
         //共有するチャンネルの設定
         if let item = SLComposeSheetConfigurationItem() {
             item.title = "チャンネル"
-            item.value = self.channelName ?? "チャンネルを選択"
-            item.tapHandler = {
-                let vc = ShareChannelViewController()
-                vc.delegate = self
-                self.navigationController?.pushViewController(vc, animated: true)
+            if self.hasSession  {
+                item.value = self.channelName ?? "チャンネルを選択"
+                item.tapHandler = {
+                    let vc = ShareChannelViewController()
+                    vc.delegate = self
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            else {
+                item.value = "ログインしていません"
             }
             items.append(item)
         }
