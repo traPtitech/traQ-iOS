@@ -125,7 +125,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension UIViewController: WKUIDelegate {
+extension ViewController: WKUIDelegate {
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {

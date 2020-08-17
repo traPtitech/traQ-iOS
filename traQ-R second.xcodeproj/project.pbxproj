@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C3DA4DE3D73E5988E6B0548 /* Pods_traQ_S.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B7812E1AE78BE784B9B716 /* Pods_traQ_S.framework */; };
 		B9057B43233E44DB0051061C /* ShareChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9057B42233E44DB0051061C /* ShareChannelViewController.swift */; };
 		B92846C02449731F00ABF9AD /* FullScreenWKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92846BF2449731F00ABF9AD /* FullScreenWKWebView.swift */; };
 		B9A555AB23338309005D1419 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A555AA23338309005D1419 /* ShareViewController.swift */; };
@@ -14,7 +15,6 @@
 		B9A555B223338309005D1419 /* traQShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B9A555A823338309005D1419 /* traQShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B9A555B92334506F005D1419 /* ShareExtensionPageTitleProcessor.js in Resources */ = {isa = PBXBuildFile; fileRef = B9A555B82334506F005D1419 /* ShareExtensionPageTitleProcessor.js */; };
 		B9BCE4F32449549800A4472E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9BCE4F22449549800A4472E /* GoogleService-Info.plist */; };
-		CE017B6B9CA19C9FBBB86F32 /* Pods_traQ_R_second.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1B19AA25B7DC1360F80032 /* Pods_traQ_R_second.framework */; };
 		E5E7B6D62224F70400B5B575 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7B6D52224F70400B5B575 /* AppDelegate.swift */; };
 		E5E7B6D82224F70400B5B575 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7B6D72224F70400B5B575 /* ViewController.swift */; };
 		E5E7B6DB2224F70400B5B575 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5E7B6D92224F70400B5B575 /* Main.storyboard */; };
@@ -48,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		3460C98CAA9627EAC97BFCA5 /* Pods-traQ-R second.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-R second.debug.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-R second/Pods-traQ-R second.debug.xcconfig"; sourceTree = "<group>"; };
+		606E5B67AA07804648696557 /* Pods-traQ-S.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-S.release.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-S/Pods-traQ-S.release.xcconfig"; sourceTree = "<group>"; };
 		B9057B42233E44DB0051061C /* ShareChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareChannelViewController.swift; sourceTree = "<group>"; };
 		B92846BF2449731F00ABF9AD /* FullScreenWKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenWKWebView.swift; sourceTree = "<group>"; };
 		B9A555A823338309005D1419 /* traQShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = traQShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,9 +57,9 @@
 		B9A555AF23338309005D1419 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9A555B723338523005D1419 /* traQShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = traQShareExtension.entitlements; sourceTree = "<group>"; };
 		B9A555B82334506F005D1419 /* ShareExtensionPageTitleProcessor.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = ShareExtensionPageTitleProcessor.js; sourceTree = "<group>"; };
+		B9AA2D2EB69C666C4044305C /* Pods-traQ-S.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-S.debug.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-S/Pods-traQ-S.debug.xcconfig"; sourceTree = "<group>"; };
 		B9BCE4F22449549800A4472E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C14ECCB48CB7A7C783FE088D /* Pods-traQ-R second.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-traQ-R second.release.xcconfig"; path = "Pods/Target Support Files/Pods-traQ-R second/Pods-traQ-R second.release.xcconfig"; sourceTree = "<group>"; };
-		CE1B19AA25B7DC1360F80032 /* Pods_traQ_R_second.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_traQ_R_second.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E7B6D22224F70400B5B575 /* traQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = traQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E7B6D52224F70400B5B575 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5E7B6D72224F70400B5B575 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		E5E7B6DF2224F70B00B5B575 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5E7B6E12224F70B00B5B575 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5E7B6E72224F74600B5B575 /* traQ-R second.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "traQ-R second.entitlements"; sourceTree = "<group>"; };
+		F5B7812E1AE78BE784B9B716 /* Pods_traQ_S.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_traQ_S.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE017B6B9CA19C9FBBB86F32 /* Pods_traQ_R_second.framework in Frameworks */,
+				4C3DA4DE3D73E5988E6B0548 /* Pods_traQ_S.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +95,8 @@
 			children = (
 				3460C98CAA9627EAC97BFCA5 /* Pods-traQ-R second.debug.xcconfig */,
 				C14ECCB48CB7A7C783FE088D /* Pods-traQ-R second.release.xcconfig */,
+				B9AA2D2EB69C666C4044305C /* Pods-traQ-S.debug.xcconfig */,
+				606E5B67AA07804648696557 /* Pods-traQ-S.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -100,7 +104,7 @@
 		207A5F3B57CDF299D83C29E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CE1B19AA25B7DC1360F80032 /* Pods_traQ_R_second.framework */,
+				F5B7812E1AE78BE784B9B716 /* Pods_traQ_S.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,15 +287,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-traQ-R second/Pods-traQ-R second-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-traQ-S/Pods-traQ-S-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-traQ-R second/Pods-traQ-R second-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-traQ-S/Pods-traQ-S-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-traQ-R second/Pods-traQ-R second-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-traQ-S/Pods-traQ-S-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8EB699FA2F3965F162DA2C7B /* [CP] Check Pods Manifest.lock */ = {
@@ -309,7 +313,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-traQ-R second-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-traQ-S-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -536,7 +540,7 @@
 		};
 		E5E7B6E52224F70B00B5B575 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3460C98CAA9627EAC97BFCA5 /* Pods-traQ-R second.debug.xcconfig */;
+			baseConfigurationReference = B9AA2D2EB69C666C4044305C /* Pods-traQ-S.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -560,7 +564,7 @@
 		};
 		E5E7B6E62224F70B00B5B575 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C14ECCB48CB7A7C783FE088D /* Pods-traQ-R second.release.xcconfig */;
+			baseConfigurationReference = 606E5B67AA07804648696557 /* Pods-traQ-S.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
