@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import Firebase
 
-class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
+class ViewController: UIViewController {
 
     var webView: WKWebView!
     var openKeyboard: Bool! = false
@@ -95,6 +95,45 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            if (self.openKeyboard) {
+                return
+            }
+            // viewDidLayoutSubviewsではSafeAreaの取得ができている
+            let topSafeAreaHeight = self.view.safeAreaInsets.top
+            let bottomSafeAreaHeight = self.view.safeAreaInsets.bottom
+            
+            let width:CGFloat = self.view.frame.width
+            let height:CGFloat = self.view.frame.height
+            webView.frame = CGRect(
+                x: 0, y: topSafeAreaHeight,
+                width: width, height: height-topSafeAreaHeight-bottomSafeAreaHeight)
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if #available(iOS 12.0, *) {
+            for v in self.webView.subviews {
+                if !(v is UIScrollView) {
+                    continue
+                }
+                let scrollView = v as! UIScrollView
+                if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                    let currentSize = scrollView.contentSize
+                    scrollView.contentSize = CGSize(
+                        width: currentSize.width,
+                        height: currentSize.height + keyboardFrame.cgRectValue.height
+                    )
+                }
+                scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+            }
+        }
+    }
+}
+
+extension UIViewController: WKUIDelegate {
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -155,8 +194,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
+}
 
-    
+extension ViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("読み込み完了")
         InstanceID.instanceID().instanceID(handler: { (result, error) in
@@ -164,41 +204,5 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
             self.webView.evaluateJavaScript("window.iOSToken = '" + (result?.token ?? "") + "'", completionHandler: nil)
         })
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if #available(iOS 11.0, *) {
-            if (self.openKeyboard) {
-                return
-            }
-            // viewDidLayoutSubviewsではSafeAreaの取得ができている
-            let topSafeAreaHeight = self.view.safeAreaInsets.top
-            let bottomSafeAreaHeight = self.view.safeAreaInsets.bottom
-            
-            let width:CGFloat = self.view.frame.width
-            let height:CGFloat = self.view.frame.height
-            webView.frame = CGRect(
-                x: 0, y: topSafeAreaHeight,
-                width: width, height: height-topSafeAreaHeight-bottomSafeAreaHeight)
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if #available(iOS 12.0, *) {
-            for v in self.webView.subviews {
-                if !(v is UIScrollView) {
-                    continue
-                }
-                let scrollView = v as! UIScrollView
-                if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                    let currentSize = scrollView.contentSize
-                    scrollView.contentSize = CGSize(
-                        width: currentSize.width,
-                        height: currentSize.height + keyboardFrame.cgRectValue.height
-                    )
-                }
-                scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-            }
-        }
-    }
+
 }
