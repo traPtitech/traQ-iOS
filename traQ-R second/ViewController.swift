@@ -86,15 +86,7 @@ class ViewController: UIViewController {
         }
     }
         
-    override func viewDidAppear(_ animated: Bool) {
-        // self.startObserveKeyboardNotification()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if #available(iOS 11.0, *) {
