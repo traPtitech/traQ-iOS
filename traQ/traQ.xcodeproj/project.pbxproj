@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,13 @@
 		B904354925B94F2D005914C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B904354825B94F2D005914C5 /* Preview Assets.xcassets */; };
 		B904355425B94F2E005914C5 /* traQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904355325B94F2E005914C5 /* traQTests.swift */; };
 		B904355F25B94F2E005914C5 /* traQUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904355E25B94F2E005914C5 /* traQUITests.swift */; };
+		B904357025B94FD1005914C5 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904356F25B94FD1005914C5 /* WebView.swift */; };
+		B904357625B99742005914C5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B904357525B99742005914C5 /* FirebaseMessaging */; };
+		B904357B25B9BA1A005914C5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904357A25B9BA1A005914C5 /* Constants.swift */; };
+		B904358825B9C23C005914C5 /* UrlUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904358725B9C23C005914C5 /* UrlUtils.swift */; };
+		B904359025B9C79D005914C5 /* Environments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904358F25B9C79D005914C5 /* Environments.swift */; };
+		B9C5A62C25B9D1F300AEAB07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5A62B25B9D1F300AEAB07 /* AppDelegate.swift */; };
+		B9C5A63525B9D87200AEAB07 /* ApplicationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5A63425B9D87200AEAB07 /* ApplicationStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +52,12 @@
 		B904355A25B94F2E005914C5 /* traQUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = traQUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B904355E25B94F2E005914C5 /* traQUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = traQUITests.swift; sourceTree = "<group>"; };
 		B904356025B94F2E005914C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B904356F25B94FD1005914C5 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		B904357A25B9BA1A005914C5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B904358725B9C23C005914C5 /* UrlUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlUtils.swift; sourceTree = "<group>"; };
+		B904358F25B9C79D005914C5 /* Environments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environments.swift; sourceTree = "<group>"; };
+		B9C5A62B25B9D1F300AEAB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B9C5A63425B9D87200AEAB07 /* ApplicationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B904357625B99742005914C5 /* FirebaseMessaging in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,8 +109,13 @@
 		B904354025B94F2B005914C5 /* traQ */ = {
 			isa = PBXGroup;
 			children = (
+				B9C5A63325B9D85F00AEAB07 /* ViewModels */,
+				B904358625B9C210005914C5 /* Views */,
+				B904358525B9C202005914C5 /* Utils */,
 				B904354125B94F2B005914C5 /* traQApp.swift */,
-				B904354325B94F2B005914C5 /* ContentView.swift */,
+				B9C5A62B25B9D1F300AEAB07 /* AppDelegate.swift */,
+				B904358F25B9C79D005914C5 /* Environments.swift */,
+				B904357A25B9BA1A005914C5 /* Constants.swift */,
 				B904354525B94F2D005914C5 /* Assets.xcassets */,
 				B904354A25B94F2D005914C5 /* Info.plist */,
 				B904354725B94F2D005914C5 /* Preview Content */,
@@ -130,6 +149,31 @@
 			path = traQUITests;
 			sourceTree = "<group>";
 		};
+		B904358525B9C202005914C5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B904358725B9C23C005914C5 /* UrlUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B904358625B9C210005914C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B904354325B94F2B005914C5 /* ContentView.swift */,
+				B904356F25B94FD1005914C5 /* WebView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B9C5A63325B9D85F00AEAB07 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B9C5A63425B9D87200AEAB07 /* ApplicationStore.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +190,9 @@
 			dependencies = (
 			);
 			name = traQ;
+			packageProductDependencies = (
+				B904357525B99742005914C5 /* FirebaseMessaging */,
+			);
 			productName = traQ;
 			productReference = B904353E25B94F2B005914C5 /* traQ.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +264,9 @@
 				Base,
 			);
 			mainGroup = B904353525B94F2B005914C5;
+			packageReferences = (
+				B904357425B99742005914C5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B904353F25B94F2B005914C5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,8 +309,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B904357025B94FD1005914C5 /* WebView.swift in Sources */,
 				B904354425B94F2B005914C5 /* ContentView.swift in Sources */,
+				B9C5A63525B9D87200AEAB07 /* ApplicationStore.swift in Sources */,
 				B904354225B94F2B005914C5 /* traQApp.swift in Sources */,
+				B904359025B9C79D005914C5 /* Environments.swift in Sources */,
+				B9C5A62C25B9D1F300AEAB07 /* AppDelegate.swift in Sources */,
+				B904357B25B9BA1A005914C5 /* Constants.swift in Sources */,
+				B904358825B9C23C005914C5 /* UrlUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +636,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B904357425B99742005914C5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B904357525B99742005914C5 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B904357425B99742005914C5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B904353625B94F2B005914C5 /* Project object */;
 }
