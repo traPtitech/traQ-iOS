@@ -14,7 +14,11 @@ struct WebView: UIViewRepresentable {
     @Binding var url: URL?
 
     func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
+        let configuration = WKWebViewConfiguration()
+        configuration.applicationNameForUserAgent = traQConstants.userAgent
+        configuration.allowsInlineMediaPlayback = true
+
+        let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.configuration.applicationNameForUserAgent = traQConstants.userAgent
         return webView
     }

@@ -9,6 +9,7 @@
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)tech.trapti.traQ.traQShareExtension</string>
+		<string>$(AppIdentifierPrefix)jp.trap.traQ.traQShareExtension</string>
 	</array>
 </dict>
 </plist>

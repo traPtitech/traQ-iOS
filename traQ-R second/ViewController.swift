@@ -23,8 +23,8 @@ class ViewController: UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        // 2020-05-01T00:00:00+09:00
-        if (Date() < Date.init(timeIntervalSince1970: 1588258800)) {
+        // 2021-02-01T00:00:00+09:00
+        if (Date() < Date.init(timeIntervalSince1970: 1612105200)) {
             host = "traq-s-dev.tokyotech.org"
         }
 
