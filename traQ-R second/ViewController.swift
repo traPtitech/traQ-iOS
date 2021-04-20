@@ -23,13 +23,12 @@ class ViewController: UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        // 2020-05-01T00:00:00+09:00
-        if (Date() < Date.init(timeIntervalSince1970: 1588258800)) {
+        // 2021-04-23T00:00:00+09:00
+        if (Date() < Date.init(timeIntervalSince1970: 1619103600)) {
             host = "traq-s-dev.tokyotech.org"
         }
 
         let webConfiguration = WKWebViewConfiguration()
-        webConfiguration.applicationNameForUserAgent = "traQ-iOS"
         webConfiguration.allowsInlineMediaPlayback = true
         webView = FullScreenWKWebView(frame: self.view.bounds, configuration: webConfiguration)
         
@@ -191,10 +190,10 @@ extension ViewController: WKUIDelegate {
 extension ViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("読み込み完了")
-        InstanceID.instanceID().instanceID(handler: { (result, error) in
-            print(result?.token ?? "No Token")
-            self.webView.evaluateJavaScript("window.iOSToken = '" + (result?.token ?? "") + "'", completionHandler: nil)
-        })
+        Messaging.messaging().token{ (token, error) in
+            print(token ?? "No Token")
+            self.webView.evaluateJavaScript("window.iOSToken = '" + (token ?? "") + "'")
+        }
     }
 
 }
