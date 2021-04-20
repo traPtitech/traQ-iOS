@@ -22,6 +22,10 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>撮影した写真を投稿するために使用します。</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>マイクへのアクセスを許可することで、他のユーザーと音声で通話できます。マイクは通話中のみ使われます。</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -43,10 +47,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>写真の撮影に使用します。</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Qallに使用します。</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

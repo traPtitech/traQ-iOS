@@ -8,7 +8,13 @@
 
 import UIKit
 import WebKit
+import AVFoundation
 import Firebase
+
+enum UserControllerMessage: String {
+    case RequestMicrophone
+    case RequestCamera
+}
 
 class ViewController: UIViewController {
 
@@ -16,9 +22,10 @@ class ViewController: UIViewController {
     var openKeyboard: Bool! = false
     var host: String = "q.trap.jp"
     
-    private let suiteName: String = "group.tech.trapti.traQ"
-    private let sessionKey: String = "traq_session"
-    private let sessionCookieName: String = "r_session"
+    private let suiteName = "group.tech.trapti.traQ"
+    private let sessionKey = "traq_session"
+    private let sessionCookieName = "r_session"
+    private let scriptMessageHandlerName = "scriptMessageHandler"
 
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -27,9 +34,17 @@ class ViewController: UIViewController {
         if (Date() < Date.init(timeIntervalSince1970: 1619103600)) {
             host = "traq-s-dev.tokyotech.org"
         }
+        let userController = WKUserContentController()
+        if #available(iOS 14, *) {
+            userController.addScriptMessageHandler(self, contentWorld: .page, name: scriptMessageHandlerName)
+        } else {
+            userController.add(self, name: scriptMessageHandlerName)
+        }
 
         let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.userContentController = userController
         webConfiguration.allowsInlineMediaPlayback = true
+        
         webView = FullScreenWKWebView(frame: self.view.bounds, configuration: webConfiguration)
         
         webView.scrollView.contentInset = .zero
@@ -84,7 +99,11 @@ class ViewController: UIViewController {
             }
         }
     }
-        
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        webView.configuration.userContentController.removeScriptMessageHandler(forName: scriptMessageHandlerName)
+    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -197,3 +216,47 @@ extension ViewController: WKNavigationDelegate {
     }
 
 }
+
+extension ViewController: WKScriptMessageHandlerWithReply {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage, replyHandler: @escaping (Any?, String?) -> Void) {
+        guard message.name == scriptMessageHandlerName else {
+            return
+        }
+        switch UserControllerMessage.init(rawValue: "\(message.body)") {
+        case .RequestMicrophone:
+            grantAVPermission(for: .audio) { result in replyHandler(result, nil) }
+        case .RequestCamera:
+            grantAVPermission(for: .video) { result in replyHandler(result, nil) }
+        case .none:
+            return
+        }
+    }
+}
+
+extension ViewController: WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard message.name == scriptMessageHandlerName else {
+            return
+        }
+        switch UserControllerMessage.init(rawValue: "\(message.body)") {
+        case .RequestMicrophone:
+            grantAVPermission(for: .audio) { result in return }
+        case .RequestCamera:
+            grantAVPermission(for: .video) { result in return }
+        case .none:
+            return
+        }
+    }
+}
+
+func grantAVPermission(for mediaType: AVMediaType, completion: @escaping (Bool) -> Void) {
+    switch AVCaptureDevice.authorizationStatus(for: mediaType) {
+    case .authorized:
+        completion(true)
+    case .notDetermined:
+        AVCaptureDevice.requestAccess(for: mediaType, completionHandler: completion)
+    default:
+        completion(false)
+    }
+}
+
